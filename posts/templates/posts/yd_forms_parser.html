@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+    <body>
+        <script type="text/javascript">
+            $(document).ready(function() {
+              $("#start").click(function() {
+                $.getJSON('/yd_forms_parser', function(dat) {
+                  $("#results").data(dat['result']);
+                });
+              });
+            });
+         </script>
+    </body>
+
+
+{% block title %}
+    YdFormsParser
+{% endblock %}
+
+{% block content_title %}
+    Парсер Яндекс.Формы
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6">
+        <form action="{{ url_for('posts.yd_forms_parser') }}" method="POST">
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label(class='control-label') }}
+                    {{ field(class='form-control') }}
+                </div>
+            {% endfor %}
+            <button id="start" type="submit" class="btn btn-success">Старт</button>
+        </form>
+    </div>
+
+{% endblock %}
