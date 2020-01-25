@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
-    <body>
+    {% block scrs %}
         <script type="text/javascript">
-            $(document).ready(function() {
-              $("#start").click(function() {
-                $.getJSON('/yd_forms_parser', function(dat) {
-                  $("#results").data(dat['result']);
+                $(document).ready(function() {
+                  $("#start").click(function() {
+                    $.getJSON('/yd_forms_parser', function(dat) {
+                      $("#results").data(dat['result']);
+                    });
+                  });
                 });
-              });
-            });
-         </script>
-    </body>
+            </script>
+    {% endblock %}
 
 
 {% block title %}
