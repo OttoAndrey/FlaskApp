@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% block scrs %}
+  <script type="text/javascript">
+    function test(){
+      dataLayer.push("event": "btn_click_test2");
+      ga('send', 'event', 'test2', 'send');
+    }
+  </script>
+{% endblock %}
+
 {% block title %}
   Главная странциа
 {% endblock %}
@@ -10,4 +19,9 @@
 
 {% block content %}
   В левом верхнем углу блог. Заходите его почитать. Оттуда можно оценить почти весь реализованный функционал
+{% endblock %}
+
+{% block buttons %}
+  <button id="btn1" onclick="ga('send', 'event', 'test', 'send');">Кнопка 1</button>
+  <button id="btn2" onclick="test();">Кнопка 2</button>
 {% endblock %}
