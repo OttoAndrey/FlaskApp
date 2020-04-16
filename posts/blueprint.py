@@ -7,8 +7,9 @@ from app import db
 from flask import redirect
 from flask import url_for
 from flask_security import login_required
-from bs4 import BeautifulSoup
-import requests
+#from bs4 import BeautifulSoup
+#import requests
+
 posts = Blueprint('posts', __name__, template_folder='templates')
 
 
