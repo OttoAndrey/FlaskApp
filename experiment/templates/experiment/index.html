@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Эксперимент
+{% endblock %}
+
+{% block content_title %}
+  Страница для экспериментов
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-3">
+      <form id="callback_form" method="POST" action="{{ url_for('experiment.index') }}">
+        {{ callback_form.hidden_tag() }}
+
+          <div class="form-group">
+              {{ callback_form.name.label(class="form-control-label") }}
+              {{ callback_form.name(class="form-control form-control-lg") }}
+          </div>
+
+          <div class="form-group">
+              {{ callback_form.phone_number.label(class="form-control-label") }}
+              {{ callback_form.phone_number(class="form-control form-control-lg") }}
+          </div>
+
+          <div class="form-group">
+              {{ callback_form.agree }} {{ callback_form.agree.label(class="form-control-label") }}
+          </div>
+
+          <button id="callback_btn" class="btn btn-success">Перезвоните мне</button>
+        </form>
+    </div>
+
+    <div class="col-md-3">
+      <form id="request_form" method="POST" action="{{ url_for('experiment.index') }}">
+        {{ request_form.hidden_tag() }}
+
+          <div class="form-group">
+              {{ request_form.name.label(class="form-control-label") }}
+              {{ request_form.name(class="form-control form-control-lg") }}
+          </div>
+
+          <div class="form-group">
+            {{ request_form.email.label(class="form-control-label") }}
+            {% if request_form.email.errors %}
+              {{ request_form.email(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in request_form.email.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+                {{ request_form.email(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ request_form.agree }} {{ request_form.agree.label(class="form-control-label") }}
+          </div>
+
+          <button id="request_btn" class="btn btn-success">Оставить заявку</button>
+        </form>
+    </div>
+
+    <div class="col-md-3">
+      <a id="phone_number" class="phone_number" href="tel:88005553535">8 800 555-35-35
+      </a>
+      <br>
+      <a id="email" class="email" href="mailto:example@mail.com">example@mail.com</a>
+    </div>
+
+    <div class="col-md-3">
+      <div class="row">
+        <button id="btn_1" class="btn btn-primary">Кнопка 1</button>
+      </div>
+      <br>
+      <div class="row">
+        <button id="btn_2" class="btn btn-primary">Кнопка 2</button>
+      </div>
+      <br>
+      <div class="row">
+        <button id="btn_3" class="btn btn-primary">Кнопка 3</button>
+      </div>
+      <br>
+    </div>
+
+  </div>
+
+{% endblock %}
